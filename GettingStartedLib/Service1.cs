@@ -1,31 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace GettingStartedLib
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
-    public class Service1 : IService1
+    public class CalculatorService : ICalculator
     {
-        public string GetData(int value)
+        public double Add(double number1, double number2)
         {
-            return string.Format("You entered: {0}", value);
+
+            double result = number1 + number2;
+            Console.WriteLine("Received Add({0},{1})", number1, number2);
+            Console.WriteLine("Return: {0}", result);
+            return result;
+        }
+        public double Subtract(double number1, double number2)
+        {
+            double result = number1 - number2;
+            Console.WriteLine("Received Subtract({0},{1})", number1, number2);
+            Console.WriteLine("Return: {0}", result);
+            return result;
+        }
+        public double Multiply(double number1, double number2)
+        {
+            double result = number1 * number2;
+            Console.WriteLine("Received Multiply({0},{1})", number1, number2);
+            Console.WriteLine("Return: {0}", result);
+            return result;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public double Divide(double number1, double number2)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            double result = number1 / number2;
+            Console.WriteLine("Received Divide({0},{1})", number1, number2);
+            Console.WriteLine("Return: {0}", result);
+            return result;
         }
     }
 }
